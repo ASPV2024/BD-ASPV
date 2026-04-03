@@ -1,0 +1,84 @@
+<!-- TON CODE EXISTANT RESTE STRICTEMENT IDENTIQUE -->
+<!-- JE NE METS ICI QUE LA PARTIE MODIFIÉE POUR NE RIEN CASSER -->
+
+<!-- ... TOUT TON CODE ORIGINAL AU-DESSUS RESTE INCHANGÉ ... -->
+
+<script>
+// Inject logo
+(function(){
+
+  // ✅ REMPLACEMENT DU LOGO (SEULE MODIF EXISTANTE)
+  const LOGO_URI = "https://res.cloudinary.com/dgvghr2if/image/upload/q_auto/f_auto/v1771943574/470562318_122100194696685678_5061047148094019643_n_wtmklj.jpg";
+
+  // Auth logo
+  const alw = document.getElementById('auth-logo-wrap');
+  if(alw) { 
+    const img = document.createElement('img'); 
+    img.src=LOGO_URI; 
+    img.alt='ASPV'; 
+    img.style.cssText='width:88px;height:88px;object-fit:contain'; 
+    alw.innerHTML=''; 
+    alw.appendChild(img); 
+  }
+
+  // Sidebar logo  
+  const slw = document.getElementById('sb-logo-wrap');
+  if(slw) { 
+    const img = document.createElement('img'); 
+    img.src=LOGO_URI; 
+    img.alt='ASPV'; 
+    img.style.cssText='width:34px;height:34px;object-fit:contain'; 
+    slw.innerHTML=''; 
+    slw.appendChild(img); 
+  }
+
+})();
+</script>
+
+<!-- ✅ AJOUT UNIQUEMENT (AUCUNE MODIF DU CODE EXISTANT) -->
+<script>
+(function(){
+
+  const logo = "https://res.cloudinary.com/dgvghr2if/image/upload/q_auto/f_auto/v1771943574/470562318_122100194696685678_5061047148094019643_n_wtmklj.jpg";
+
+  // 🔍 Logo dans les champs de recherche
+  document.querySelectorAll('input[type="search"], input[placeholder*="Rechercher"], input[placeholder*="rechercher"]').forEach(input=>{
+    if (input.parentElement && !input.parentElement.classList.contains('logo-added')) {
+
+      const wrapper = document.createElement('div');
+      wrapper.style.position = 'relative';
+      wrapper.style.display = 'flex';
+      wrapper.style.alignItems = 'center';
+
+      const img = document.createElement('img');
+      img.src = logo;
+      img.style.width = '18px';
+      img.style.height = '18px';
+      img.style.objectFit = 'cover';
+      img.style.borderRadius = '50%';
+      img.style.position = 'absolute';
+      img.style.left = '10px';
+
+      input.style.paddingLeft = '36px';
+
+      input.parentNode.insertBefore(wrapper, input);
+      wrapper.appendChild(img);
+      wrapper.appendChild(input);
+      wrapper.classList.add('logo-added');
+    }
+  });
+
+  // 👤 Remplacer avatars par logo
+  document.querySelectorAll('.user-av').forEach(el=>{
+    const img = document.createElement('img');
+    img.src = logo;
+    img.className = 'user-av-img';
+    el.innerHTML = '';
+    el.appendChild(img);
+  });
+
+})();
+</script>
+
+</body>
+</html>
